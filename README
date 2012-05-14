@@ -1,1 +1,6 @@
 WebMining übung 1
+
+WebMining Übung 2:
+- Wie firefox plugin testen?
+  -> source bin/activate // Um Firefox SDK zu aktivieren
+  -> cfx run // Startet Browser mit den Plugin

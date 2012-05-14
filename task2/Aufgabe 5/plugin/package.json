@@ -1,0 +1,10 @@
+{
+    "name": "keaddon", 
+    "license": "MPL 1.1/GPL 2.0/LGPL 2.1", 
+    "author": "Clemens Dörrhöfer", 
+    "version": "0.1", 
+    "fullName": "keaddon", 
+    "id": "jid0-GN3ivO79cgfs9k4P3lxdo7TPFa4", 
+    "description": "a basic add-on",
+	"icon": "data/keicon.png" 
+}
