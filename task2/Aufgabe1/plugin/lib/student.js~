@@ -39,7 +39,11 @@ function CosSimi(u, v)
         vNorm = vNorm+ v[i] * v[i]
     }
     vNorm = Math.sqrt(vNorm)
-
+console.log("cos simi");
+console.log(dotProduct);
+console.log(uNorm);
+console.log(vNorm);
+console.log(uNorm * vNorm);
     return dotProduct / (uNorm * vNorm);
 }
 
@@ -77,6 +81,7 @@ function isStopWord(stopwords, word)
     {
         if(word == stopwords[i] && word != "")
         {
+            //console.log(">>" + word + "<< >>" + stopwords[i] + "<<");
             return true;
         }
     }
@@ -105,6 +110,11 @@ function student(text) {
      // set letter or letter-pair processing function
      // E.G. var letterOrPair = text; for letter-pairs
      var letterOrPair = processLetters(text);
+
+for(var i=0; i < 20;i++)
+    {
+        console.log(letterOrPair[i])
+    }
 
        charMap= util.countElements(letterOrPair);
 
@@ -159,8 +169,10 @@ function student(text) {
 
     var textSortedWithEng = sortAccordTheFirst(englishCharMap, charMap);
     var engSimi =  CosSimi(englishFreqList, textSortedWithEng);
-
-
+    
+console.log("ger simi: " + germSimi);
+console.log("spa simi: " + spanSimi);
+console.log("en simi: " + engSimi);
 
     if(spanSimi > engSimi && 
        spanSimi > germSimi) 
