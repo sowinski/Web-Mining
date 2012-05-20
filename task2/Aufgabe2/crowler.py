@@ -7,6 +7,14 @@ socket.setdefaulttimeout(5)
 
 from sgmllib import SGMLParser
 
+def sort_by_value(d):
+    """ Returns the keys of dictionary d sorted by their values """
+    items=d.items()
+    backitems=[ [v[1],v[0]] for v in items]
+    backitems.sort()
+    return [ backitems[i][1] for i in range(0,len(backitems))]
+
+
 def getUrlContent(url):
     try:
         fp = urllib.urlopen(url)
@@ -37,6 +45,9 @@ class Crawler():
         self.urlList = []
         self.urlListNew = []
         
+        #Fuer Aufgabe 3
+        self.urlDictionarie = {}
+        
     def plotAufgabe1(self, urls, urlsneu):
         print "eins"
     
@@ -64,6 +75,13 @@ class Crawler():
                 test = u[0:4]
                 if test == 'http':
                     urlsaufseite += 1
+                    
+                    #AUFGABE 3 haeufigket von urls ausrechnen
+                    if self.urlDictionarie.has_key(u):
+                        self.urlDictionarie[u] += 1
+                    else:
+                        self.urlDictionarie[u] = 1
+                    ######################
                     if not u in self.urlContainer:
                         urlsaufseiteneu += 1
                     self.urlContainer.append(u)
@@ -92,6 +110,30 @@ c = Crawler()
 c.crawlMore(100, 'http://golem.de')
 print "Done"
 
+#Aufgabe 3
+print "Aufgabe 3"
+
+
+aufgabe3 = []
+for k in sorted(c.urlDictionarie.values()):
+    aufgabe3.append(k)
+    
+print "LAENGE"
+print len(aufgabe3)
+
+ind = np.arange(len(aufgabe3))    
+width = 1.0       # the width of the bars
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+rects1 = ax.bar(ind, aufgabe3, width, color='r')
+
+ax.legend( (rects1[0], rects1[0]), ('URL-Haeufigkeit', 'URL-Haeufigkeit') )
+
+plt.show()
+    
+#################################################################
+#Aufgabe 1 und 2
 ind = np.arange(len(c.urlList))  # the x locations for the groups
 
 print ind
